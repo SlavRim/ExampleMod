@@ -1,0 +1,109 @@
+<Project>
+
+	<Choose>
+		<When Condition="'$(SolutionDir)' == ''">
+			<PropertyGroup>
+				<SolutionDir>$(ProjectDir)..\</SolutionDir>
+			</PropertyGroup>
+		</When>
+	</Choose>
+
+	<Choose>
+		<When Condition="'$(Configurations)' == ''">
+			<PropertyGroup>
+				<Configurations>1.3;1.4;1.3_DEBUG;1.4_DEBUG</Configurations>
+			</PropertyGroup>
+		</When>
+	</Choose>
+	
+	<Choose>
+			
+		<When Condition="$(Configuration.StartsWith('1.3'))">
+
+			<PropertyGroup>
+				<GameDir>D:\Steam\steamapps\common\RimWorld 1.3\</GameDir>
+				<DefineConstants>$(DefineConstants);v1_3</DefineConstants>
+			</PropertyGroup>
+			<ItemGroup>
+				<PackageReference Include="Krafs.Rimworld.Ref" Version="1.3.*" ExcludeAssets="runtime" />
+			</ItemGroup>
+
+		</When>
+		<When Condition="$(Configuration.StartsWith('1.4'))">
+
+			<PropertyGroup>
+				<GameDir>D:\Steam\steamapps\common\RimWorld\</GameDir>
+				<DefineConstants>$(DefineConstants);v1_4</DefineConstants>
+			</PropertyGroup>
+			<ItemGroup>
+				<PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.*-*" ExcludeAssets="runtime" />
+			</ItemGroup>
+
+		</When>
+
+	</Choose>
+	
+	<Choose>
+		<When Condition="$(Configuration.EndsWith('DEBUG'))">
+			<PropertyGroup>
+				<DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+			</PropertyGroup>
+		</When>
+	</Choose>
+
+	<PropertyGroup>
+		<TargetFramework>net472</TargetFramework>
+		<OutputType>Library</OutputType>
+		<LangVersion>preview</LangVersion>
+		<Nullable>annotations</Nullable>
+		<EnablePreviewFeatures>true</EnablePreviewFeatures>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<RootNamespace>$(MSBuildProjectName.Replace(" ", "."))</RootNamespace>
+		<NoWarn>MSB3052;CS8618;CS8603</NoWarn>
+
+		<ModName>$(AssemblyName)</ModName>
+
+		<BaseOutputPath>$(ProjectDir)Out\$(ModName)\</BaseOutputPath>
+		<ModOutputPath>$(BaseOutputPath)</ModOutputPath>
+		<OutputPath>$(ModOutputPath)$(Configuration.Replace("_DEBUG", ""))\Assemblies\</OutputPath>
+		<PackageOutputPath>$(ProjectDir)</PackageOutputPath>
+
+		<AssetsDir>$(ProjectDir)Assets\</AssetsDir>
+		
+		<GameModsDir>$(GameDir)Mods\</GameModsDir>
+
+		<RunPostBuildEvent>Always</RunPostBuildEvent>
+		<RunPreBuildEvent>Always</RunPreBuildEvent>
+
+		<DebugType>None</DebugType>
+	</PropertyGroup>
+
+	<Target Name="DeleteOutput" AfterTargets="PreBuildEvent">
+		<Exec Command="rmdir /S /Q &quot;$(ModOutputPath)&quot;" />
+	</Target>
+	<Target Name="CopyAssets" BeforeTargets="DeleteOldMod" AfterTargets="PostBuildEvent">
+		<Exec Command="xcopy /Y /E /I &quot;$(AssetsDir)&quot; &quot;$(ModOutputPath)&quot;" />
+	</Target>
+	<Target Name="DeleteOldMod" BeforeTargets="CopyNewMod" AfterTargets="PostBuildEvent">
+		<Exec Command="rmdir /S /Q &quot;$(GameModsDir)$(ModName)&quot;" />
+	</Target>
+	<Target Name="CopyNewMod" AfterTargets="PostBuildEvent">
+		<Exec Command="xcopy /Y /R /S /I &quot;$(ModOutputPath)&quot; &quot;$(GameModsDir)$(ModName)&quot;" />
+	</Target>
+
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="System.Reflection" />
+		<Using Include="System.Collections" />
+		<Using Include="System.Collections.Generic" />
+		<Using Include="System.Linq" />
+		<Using Include="UnityEngine" />
+		<Using Include="RimWorld" />
+		<Using Include="Verse" />
+		<Using Include="Verse.AI" />
+		<Using Static="true"
+			   Include="Verse.TranslatorFormattedStringExtensions"/>
+	</ItemGroup>
+
+</Project>

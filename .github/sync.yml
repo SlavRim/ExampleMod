@@ -1,0 +1,6 @@
+group:
+  repos: |
+    SlavRim/NoChildRaidDeath
+  files: 
+    - source: Shared.mod.props.csproj
+      dest: Shared.mod.props.csproj
