@@ -15,9 +15,9 @@
 			</PropertyGroup>
 		</When>
 	</Choose>
-	
+
 	<Choose>
-			
+
 		<When Condition="$(Configuration.StartsWith('1.3'))">
 
 			<PropertyGroup>
@@ -42,13 +42,19 @@
 		</When>
 
 	</Choose>
-	
+
 	<Choose>
 		<When Condition="$(Configuration.EndsWith('DEBUG'))">
 			<PropertyGroup>
+				<DebugType>full</DebugType>
 				<DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
 			</PropertyGroup>
 		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<DebugType>none</DebugType>
+			</PropertyGroup>
+		</Otherwise>
 	</Choose>
 
 	<PropertyGroup>
@@ -70,16 +76,15 @@
 		<PackageOutputPath>$(ProjectDir)</PackageOutputPath>
 
 		<AssetsDir>$(ProjectDir)Assets\</AssetsDir>
-		
+
 		<GameModsDir>$(GameDir)Mods\</GameModsDir>
 
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<RunPreBuildEvent>Always</RunPreBuildEvent>
 
-		<DebugType>None</DebugType>
 	</PropertyGroup>
 
-	<Target Name="DeleteOutput" AfterTargets="PreBuildEvent">
+	<Target Name="DeleteOutput" AfterTargets="BeforeClean">
 		<Exec Command="rmdir /S /Q &quot;$(ModOutputPath)&quot;" />
 	</Target>
 	<Target Name="CopyAssets" BeforeTargets="DeleteOldMod" AfterTargets="PostBuildEvent">
