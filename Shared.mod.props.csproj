@@ -21,7 +21,7 @@
 		<When Condition="$(Configuration.StartsWith('1.3'))">
 
 			<PropertyGroup>
-				<GameDir>D:\Steam\steamapps\common\RimWorld 1.3\</GameDir>
+				<GameDir>D:\Steam\steamapps\common\RimWorld\</GameDir>
 				<DefineConstants>$(DefineConstants);v1_3</DefineConstants>
 			</PropertyGroup>
 			<ItemGroup>

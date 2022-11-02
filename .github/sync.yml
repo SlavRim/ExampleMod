@@ -1,6 +1,6 @@
 group:
   repos: |
-    SlavRim/NoChildRaidDeath
+    SlavRim/Lives-Matter
   files: 
     - source: Shared.mod.props.csproj
       dest: Shared.mod.props.csproj
