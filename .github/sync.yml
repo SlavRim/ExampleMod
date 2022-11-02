@@ -4,3 +4,7 @@ group:
   files: 
     - source: Shared.mod.props.csproj
       dest: Shared.mod.props.csproj
+    - source: Properties/launchSettings.json
+      dest: Properties/launchSettings.json
+    - source: .gitignore
+      dest: .gitignore

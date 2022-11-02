@@ -70,13 +70,14 @@
 
 		<ModName>$(AssemblyName)</ModName>
 
-		<BaseOutputPath>$(ProjectDir)Out\$(ModName)\</BaseOutputPath>
-		<ModOutputPath>$(BaseOutputPath)</ModOutputPath>
-		<OutputPath>$(ModOutputPath)$(Configuration.Replace("_DEBUG", ""))\Assemblies\</OutputPath>
+		<ModBaseOutputPath>$(ProjectDir)build\</ModBaseOutputPath>
+		<ModOutputPath>$(ModBaseOutputPath)$(ModName)\</ModOutputPath>
+		<ModOutputVersion>$(ModOutputPath)$(Configuration.Replace('_DEBUG', ''))\</ModOutputVersion>
+		<ModOutputAssemblies>$(ModOutputVersion)Assemblies\</ModOutputAssemblies>
 		<PackageOutputPath>$(ProjectDir)</PackageOutputPath>
 
 		<AssetsDir>$(ProjectDir)Assets\</AssetsDir>
-
+		
 		<GameModsDir>$(GameDir)Mods\</GameModsDir>
 
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
@@ -84,16 +85,27 @@
 
 	</PropertyGroup>
 
-	<Target Name="DeleteOutput" AfterTargets="BeforeClean">
-		<Exec Command="rmdir /S /Q &quot;$(ModOutputPath)&quot;" />
+	<ItemGroup>
+		<Compile Remove="$(ModBaseOutputPath)**" />
+		<EmbeddedResource Remove="$(ModBaseOutputPath)**" />
+		<None Remove="$(ModBaseOutputPath)**" />
+	</ItemGroup>
+	
+	<Target Name="cleanup" AfterTargets="BeforeClean">
+		<Exec Command="rmdir /S /Q &quot;$(ModBaseOutputPath)&quot;" />
+		<Exec Command="rmdir /S /Q &quot;$(BaseOutputPath)&quot;" />
+		<Exec Command="rmdir /S /Q &quot;$(BaseIntermediateOutputPath)&quot;" />
 	</Target>
-	<Target Name="CopyAssets" BeforeTargets="DeleteOldMod" AfterTargets="PostBuildEvent">
-		<Exec Command="xcopy /Y /E /I &quot;$(AssetsDir)&quot; &quot;$(ModOutputPath)&quot;" />
-	</Target>
-	<Target Name="DeleteOldMod" BeforeTargets="CopyNewMod" AfterTargets="PostBuildEvent">
+	
+	<Target Name="prebuild" AfterTargets="PreBuildEvent">
+		<Exec Command="rmdir /S /Q &quot;$(ModOutputAssemblies)&quot;" />
 		<Exec Command="rmdir /S /Q &quot;$(GameModsDir)$(ModName)&quot;" />
 	</Target>
-	<Target Name="CopyNewMod" AfterTargets="PostBuildEvent">
+	
+	<Target Name="postbuild" AfterTargets="PostBuildEvent">
+		<MakeDir Directories="$(ModOutputPath)" />
+		<Exec Command="xcopy /Y /R /S /I &quot;$(AssetsDir)&quot; &quot;$(ModOutputPath)&quot;" />
+		<Exec Command="xcopy /Y /R /S /I &quot;$(OutputPath)&quot; &quot;$(ModOutputAssemblies)&quot;" />
 		<Exec Command="xcopy /Y /R /S /I &quot;$(ModOutputPath)&quot; &quot;$(GameModsDir)$(ModName)&quot;" />
 	</Target>
 
