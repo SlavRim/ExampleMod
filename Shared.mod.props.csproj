@@ -58,7 +58,7 @@
 	</Choose>
 
 	<PropertyGroup>
-		<TargetFramework>net472</TargetFramework>
+		<TargetFramework>net48</TargetFramework>
 		<OutputType>Library</OutputType>
 		<LangVersion>preview</LangVersion>
 		<Nullable>annotations</Nullable>

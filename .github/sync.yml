@@ -1,6 +1,7 @@
 group:
   repos: |
     SlavRim/Lives-Matter
+    SlavRim/DominantGene
   files: 
     - source: Shared.mod.props.csproj
       dest: Shared.mod.props.csproj
