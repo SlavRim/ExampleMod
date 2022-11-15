@@ -2,6 +2,10 @@ group:
   repos: |
     SlavRim/Lives-Matter
     SlavRim/DominantGene
+    SlavRim/ToxVent
+    SlavRim/RimworldBetterLoading
+    SlavRim/Locks2
+    SlavRim/NeuralInterceptMatrix
   files: 
     - source: Shared.mod.props.csproj
       dest: Shared.mod.props.csproj
