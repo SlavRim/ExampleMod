@@ -2,10 +2,11 @@
 
 ### Template mod for easier development startup.
 
-### Pre-Requisites:
+### Prerequisites:
 
-1. NET 6+ SDK.
-2. Installed game.
+- [.NET SDK 6+](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+- [.NET Runtime + SDK 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
+- Installed game.
 
 ### How to setup:
 
