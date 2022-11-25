@@ -14,3 +14,6 @@ jobs:
         uses: BetaHuhn/repo-file-sync-action@v1
         with:
           GH_PAT: ${{ secrets.GH_PAT }}
+          PR_LABELS: |
+          file-sync
+          automerge
