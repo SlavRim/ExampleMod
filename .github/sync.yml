@@ -18,3 +18,5 @@ group:
       dest: Properties/launchSettings.json
     - source: .gitignore
       dest: .gitignore
+    - source: .github/workflows/automerge.yml
+      dest: .github/workflows/automerge.yml

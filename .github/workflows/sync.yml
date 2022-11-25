@@ -15,5 +15,5 @@ jobs:
         with:
           GH_PAT: ${{ secrets.GH_PAT }}
           PR_LABELS: |
-          file-sync
-          automerge
+            file-sync
+            automerge
