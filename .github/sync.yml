@@ -22,3 +22,5 @@ group:
       dest: .editorconfig
     - source: .github/workflows/automerge.yml
       dest: .github/workflows/automerge.yml
+    - source: .github/workflows/build.yml
+      dest: .github/workflows/build.yml
