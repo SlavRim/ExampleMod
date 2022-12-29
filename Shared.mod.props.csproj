@@ -145,7 +145,7 @@
 		<Using Include="Verse.AI" />
 		<Using Static="true"
 			   Include="Verse.TranslatorFormattedStringExtensions"/>
-		<Using Alias="Random" Include="Verse.Rand" />
+		<Using Alias="RimRandom" Include="Verse.Rand" />
 	</ItemGroup>
 
 </Project>
