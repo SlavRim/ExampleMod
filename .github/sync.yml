@@ -12,6 +12,7 @@ group:
     SlavRim/Locks2
     SlavRim/NeuralInterceptMatrix
     SlavRim/HumanStoryteller
+    SlavRim/Morziva
   files: 
     - source: Shared.mod.props.csproj
       dest: Shared.mod.props.csproj
