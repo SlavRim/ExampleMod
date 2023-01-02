@@ -8,6 +8,6 @@ public sealed class Mod : Verse.Mod
     public Mod(ModContentPack content) : base(content)
     {
         Instance = this;
-        Log.Message("Hello world!")
+        Log.Message("Hello world!");
     }
 }
