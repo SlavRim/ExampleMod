@@ -1,5 +1,4 @@
 global using Mod = ExampleMod.Mod;
-using System.Runtime.CompilerServices;
 
 namespace ExampleMod;
 
