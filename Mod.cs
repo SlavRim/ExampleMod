@@ -10,7 +10,7 @@ public sealed class Mod : Verse.Mod
         Instance = this;
         SayHelloWorld();
     }
-    static void SayHelloWorld([CallerFilePath] string file = null, [CallerMemberName] string member = null, [CallerLineNumber] int line = 0) => 
+    private static void SayHelloWorld([CallerFilePath] string file = null, [CallerMemberName] string member = null, [CallerLineNumber] int line = 0) => 
         Log.Message(
             ColoredText.Colorize(
                 $"Hello, world!\n{file} {member}:{line}",
