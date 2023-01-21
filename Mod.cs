@@ -4,6 +4,10 @@ namespace ExampleMod;
 
 public sealed class Mod : Verse.Mod
 {
+#if v1_3
+    [MayRequireBiotech]
+#endif
+    int i = 0;
     public static Mod Instance { get; private set; }
     public Mod(ModContentPack content) : base(content)
     {
