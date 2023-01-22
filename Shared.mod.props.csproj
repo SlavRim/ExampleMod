@@ -156,12 +156,12 @@
 		<ModOutputPath>$(ModBuildDir)$(ModName)\</ModOutputPath>
 		<!-- build\ModName\ -->
 
-		<ModVersion>$(Configuration.Replace('_DEBUG', ''))</ModVersion>
+		<GameVersion>$(Configuration.Replace('_DEBUG', ''))</GameVersion>
 		<!-- Mod version (1.3..1.4) -->
-		<ModOutputVersionPath>$(ModOutputPath)$(ModVersion)\</ModOutputVersionPath>
+		<ModOutputVersionPath>$(ModOutputPath)$(GameVersion)\</ModOutputVersionPath>
 		<!-- build\ModName\(1.3..1.4)\ -->
 
-		<ModAssembliesPath>$(ModVersion)\Assemblies\</ModAssembliesPath>
+		<ModAssembliesPath>$(GameVersion)\Assemblies\</ModAssembliesPath>
 		<!-- (1.3..1.4)\Assemblies\ -->
 		<ModOutputAssembliesPath>$(ModOutputPath)$(ModAssembliesPath)</ModOutputAssembliesPath>
 		<!-- build\ModName\(1.3..1.4)\Assemblies\ -->
@@ -175,7 +175,7 @@
 		<!-- Game\Mods\ -->
 		<GameModPath>$(GameModsPath)$(ModName)\</GameModPath>
 		<!-- Game\Mods\ModName\ -->
-		<GameModVersion>$(GameModPath)$(ModVersion)\</GameModVersion>
+		<GameModVersion>$(GameModPath)$(GameVersion)\</GameModVersion>
 		<!-- Game\Mods\ModName\(1.3..1.4)\ -->
 		<GameModAssembliesPath>$(GameModPath)$(ModAssembliesPath)</GameModAssembliesPath>
 		<!-- Game\Mods\ModName\(1.3..1.4)\Assemblies\ -->
