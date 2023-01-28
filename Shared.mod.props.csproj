@@ -269,7 +269,7 @@
 		<MakeDir Directories="$(ModOutputPath)" />
 		<Exec Command="rmdir /S /Q &quot;$(GameModAssembliesPath)&quot;" />
 
-		<Exec Command="xcopy /Y /R /S /D /I &quot;$(ModOutputAssembliesPath)&quot; &quot;$(GameModAssembliesPath)/&quot;" />
+		<Exec Command="xcopy /Y /R /S /D /I &quot;$(ModOutputAssembliesPath)&quot; &quot;$(GameModAssembliesPath)&quot;" />
 		<Exec Command="xcopy /Y /R /S /D /I &quot;$(ModOutputPath)&quot; &quot;$(GameModPath)&quot;" />
 	</Target>
 
