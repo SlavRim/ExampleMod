@@ -14,7 +14,9 @@ group:
     SlavRim/HumanStoryteller
     SlavRim/Morziva
     SlavRim/NoPsycasts
+    SlavRim/RimTerritory
     SlavRim/MechTowers
+    SlavRim/AssimilationGene
   files: 
     - source: Shared.mod.props.csproj
       dest: Shared.mod.props.csproj
