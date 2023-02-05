@@ -17,6 +17,7 @@ group:
     SlavRim/RimTerritory
     SlavRim/MechTowers
     SlavRim/AssimilationGene
+    SlavRim/StylishDebug
   files: 
     - source: Shared.mod.props.csproj
       dest: Shared.mod.props.csproj
